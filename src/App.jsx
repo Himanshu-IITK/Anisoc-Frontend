@@ -13,6 +13,10 @@ import FanFictionList from './pages/FanFictionList'
 import ChapterReader from './pages/ChapterReader'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import ProtectedRoutes from './components/Protected_Routes'
+import FanFictionMetaCreatePage from './pages/FanFictionMetaCreatePage'
+import FanFictionMetaEditPage from './pages/FanFictionMetaEditPage'
+import ChapterStudioPage from './pages/ChapterStudioPage'
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +36,33 @@ function App() {
         <Route path="/fanfiction" element={<FanFictionList />} />
         <Route path="/fanfiction/:id" element={<FanFictionDetail />} />
         <Route path="/chapters/:id" element={<ChapterReader />} />
+        <Route
+          path="/fanfiction/new"
+          element={
+            <ProtectedRoutes>
+              <FanFictionMetaCreatePage />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/fanfiction/:id/edit"
+          element={
+            <ProtectedRoutes>
+              <FanFictionMetaEditPage />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/fanfiction/:id/chapters"
+          element={
+            <ProtectedRoutes>
+              <ChapterStudioPage />
+            </ProtectedRoutes>
+          }
+        />
+        
       </Routes>
 
       <Footer />
